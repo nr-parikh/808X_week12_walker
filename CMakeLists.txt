@@ -14,6 +14,8 @@ find_package(catkin REQUIRED
 	sensor_msgs
 )
 
+set (CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -104,7 +106,10 @@ find_package(catkin REQUIRED
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 
-catkin_package()
+catkin_package(
+	INCLUDE_DIRS include
+	CATKIN_DEPENDS roscpp sensor_msgs geometry_msgs move_base_msgs
+)
 
 ###########
 ## Build ##
@@ -130,7 +135,7 @@ ${catkin_INCLUDE_DIRS}
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/808X_week12_walker_node.cpp)
+add_executable(walker_node src/main.cpp src/turtlebot_walker.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -143,9 +148,9 @@ ${catkin_INCLUDE_DIRS}
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(${PROJECT_NAME}_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(walker_node
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
