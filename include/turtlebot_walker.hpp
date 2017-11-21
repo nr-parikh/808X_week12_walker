@@ -48,7 +48,11 @@ class turtlebotWalker {
    */
   ~turtlebotWalker();
   /**
-   * @brief      Check if collision happened
+   * @brief      Check if the collision happened from laser scan messages
+   *
+   * @param[in]  msg: The message from which collision has to be checked
+   *
+   * @return     void: Return nothing
    */
   auto collisionCheck(const sensor_msgs::LaserScan::ConstPtr& msg) -> void;
   /**

@@ -34,10 +34,11 @@
 #include "turtlebot_walker.hpp"
 
 int main(int argc, char **argv) {
+  // Initialize the node
   ros::init(argc, argv, "turtlebotWalker");
-
+  // Create the object of the class
   turtlebotWalker walker;
-
+  // Explore the environment
   walker.explore();
 
   return 0;

@@ -1,0 +1,13 @@
+<launch>
+	
+	<arg name="record" default="false"/>
+	<arg name="duration" default="45"/>
+
+	<include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
+	</include>
+
+	<node pkg="808X_week12_walker" name="walker_node" type="walker_node"/>
+
+	<node pkg="rosbag" name="recorder_bag" type="record" args="--all --output-name=$(find 808X_week12_walker)/results/turtlebot_walker.bag -x /camera/(.*) --duration=$(arg duration)" if="$(arg record)"/>
+
+</launch>
