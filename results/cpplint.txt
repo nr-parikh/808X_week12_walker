@@ -1,0 +1,4 @@
+nrparikh@ubuntu:~/catkin_ws/src/808X_week12_walker$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
+Done processing ./include/turtlebot_walker.hpp
+Done processing ./src/main.cpp
+Done processing ./src/turtlebot_walker.cpp
